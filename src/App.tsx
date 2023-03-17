@@ -7,7 +7,7 @@ function App() {
     let digits : React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>[] = [];
     for (let i = 1; i < 10; i++) {
       digits.push(
-        <button key={i}>{i}</button>
+        <button className="digits__buttons" key={i}>{i}</button>
       )
     }
     return digits;
@@ -22,19 +22,19 @@ function App() {
         </div>
 
         <div className="operators">
-          <button>/</button>
-          <button>*</button>
-          <button>+</button>
-          <button>-</button>
+          <button className="operators__buttons">/</button>
+          <button className="operators__buttons">*</button>
+          <button className="operators__buttons">+</button>
+          <button className="operators__buttons">-</button>
 
-          <button>DEL</button>
+          <button className="operators__buttons">DEL</button>
         </div>
 
         <div className="digits">
           <>{ createDigits() }</>
-          <button>0</button>
-          <button>.</button>
-          <button>=</button>
+          <button className="digits__buttons">0</button>
+          <button className="digits__buttons">.</button>
+          <button className="digits__buttons">=</button>
         </div>
 
 
