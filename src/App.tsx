@@ -1,8 +1,15 @@
 import React from 'react';
 import './App.scss';
+import { useState } from 'react';
 
 function App() {
 
+  const [calc, setCalc] = useState("");  
+  const [result, setResult] = useState("");
+
+  const ops : string[] = ['/', '*', '+', '-', '.'];
+
+  
   const createDigits = () => {
     let digits : React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>[] = [];
     for (let i = 1; i < 10; i++) {
