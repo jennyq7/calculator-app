@@ -4,12 +4,14 @@ import { useState } from 'react';
 
 function App() {
 
-  const [calc, setCalc] = useState("");  
+  //set up useStates for calc and result
+  const [calc, setCalc] = useState("");
   const [result, setResult] = useState("");
 
-  const ops : string[] = ['/', '*', '+', '-', '.'];
+  const ops: string[] = ['/', '*', '+', '-', '.'];
 
-  const updateCalc = (value : string) => {
+  //function to update the value entered and the exceptions to this
+  const updateCalc = (value: string) => {
     if (
       (ops.includes(value) && calc === '') ||
       (ops.includes(value) && ops.includes(calc.slice(-1)))
@@ -23,8 +25,9 @@ function App() {
     }
   }
 
+  //function to use for loop to return the numbers 1 to 9
   const createDigits = () => {
-    let digits : React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>[] = [];
+    let digits: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>[] = [];
     for (let i = 1; i < 10; i++) {
       digits.push(
         <button className="digits__buttons" key={i} onClick={() => updateCalc(i.toString())}>{i}</button>
@@ -33,19 +36,21 @@ function App() {
     return digits;
   }
 
+  //function to display the calculated value and convert it to a string
   const calculate = () => {
     setCalc(eval(calc).toString());
   }
 
+  //function to delete the last item on the display and to recalculate the result value
   const deleteLast = () => {
-    if ( calc === '') {
+    if (calc === '') {
       return;
     }
-    const value : string = calc.slice(0, -1);
+    const value: string = calc.slice(0, -1);
     setCalc(value);
 
-    if (ops.includes(value.slice(-1))){
-      setResult(eval(value.toString().slice(0,-1)))
+    if (ops.includes(value.slice(-1))) {
+      setResult(eval(value.toString().slice(0, -1)))
     }
     else {
       setResult(eval(value.toString()))
@@ -70,7 +75,7 @@ function App() {
         </div>
 
         <div className="digits">
-          <>{ createDigits() }</>
+          <>{createDigits()}</>
           <button className="digits__buttons" onClick={() => updateCalc('0')}>0</button>
           <button className="digits__buttons" onClick={() => updateCalc('.')}>.</button>
 
@@ -80,7 +85,7 @@ function App() {
 
 
       </div>
-    </div> 
+    </div>
   );
 }
 
